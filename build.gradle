@@ -1,0 +1,47 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.7
+archivesBaseName = name
+version = '0.0.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+jar {
+    manifest {
+        attributes(
+            "Manifest-Version": "1.0",
+            "Implementation-Title": name,
+            "Implementation-Version": version,
+            "Class-Path": configurations.compile.collect { "lib/" + it.getName() }.join(' ')
+        )
+    }
+}
+
+task createRunScript {
+    def docs = file("$buildDir/scripts")
+    outputs.dir docs
+    doLast {
+        docs.mkdirs()
+        new File(docs, "run.sh").write("nohup java -classpath ${project.name}-${project.version}.jar:./conf netty.example.proxy.HexDumpProxy 6699 127.0.0.1 6379 > logs/nohup.log 2>&1 &")
+    }
+}
+
+task zip(type: Zip, dependsOn: ['build', 'createRunScript']) {
+    into("$baseName") {
+        from "$buildDir/$libsDirName"
+        from "$buildDir/scripts/"
+    }
+    into("$baseName/lib") {
+        from configurations.runtime
+    }
+    into("$baseName/conf") {
+        from sourceSets.main.output.resourcesDir
+    }
+}
+

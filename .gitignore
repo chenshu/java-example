@@ -1,0 +1,17 @@
+# Java #
+*.class
+
+## Package Files ##
+*.jar
+*.war
+*.ear
+
+## Eclipse Directory and Files ##
+.classpath
+.project
+.settings/
+bin/
+
+## Gradle Directory ##
+.gradle
+build
