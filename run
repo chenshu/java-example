@@ -1,0 +1,19 @@
+#java -Xms2000m -Dthread_count=10 -Dtimeout=60000 -cp log4j2-performance.jar javaopt.logging.benchmark.TestLog4j2 Log4j2FileAppenderThread
+#java -Xms2000m -Dthread_count=10 -Dtimeout=60000 -cp log4j2-performance.jar javaopt.logging.benchmark.TestLog4j2 Log4j2RollingFileAppenderThread
+#java -Xms2000m -Dthread_count=10 -Dtimeout=60000 -cp log4j2-performance.jar javaopt.logging.benchmark.TestLog4j2 Log4j2RandomAccessFileAppenderThread
+#java -Xms2000m -Dthread_count=10 -Dtimeout=60000 -cp log4j2-performance.jar javaopt.logging.benchmark.TestLog4j2 Log4j2RollingRandomAccessFileAppenderThread
+
+#java -Xms2000m -Dthread_count=10 -Dtimeout=60000 -cp log4j2-performance.jar javaopt.logging.benchmark.TestLog4j2 Log4j2AsyncFileAppenderThread
+#java -Xms2000m -Dthread_count=10 -Dtimeout=60000 -cp log4j2-performance.jar javaopt.logging.benchmark.TestLog4j2 Log4j2AsyncRollingFileAppenderThread
+#java -Xms2000m -Dthread_count=10 -Dtimeout=60000 -cp log4j2-performance.jar javaopt.logging.benchmark.TestLog4j2 Log4j2AsyncRandomAccessFileAppenderThread
+#java -Xms2000m -Dthread_count=10 -Dtimeout=60000 -cp log4j2-performance.jar javaopt.logging.benchmark.TestLog4j2 Log4j2AsyncRollingRandomAccessFileAppenderThread
+
+#java -Xms2000m -Dthread_count=10 -Dtimeout=60000 -cp log4j2-performance.jar javaopt.logging.benchmark.TestLog4j2 Log4j2FileAppenderAsyncLoggerThread
+#java -Xms2000m -Dthread_count=10 -Dtimeout=60000 -cp log4j2-performance.jar javaopt.logging.benchmark.TestLog4j2 Log4j2RollingFileAppenderAsyncLoggerThread
+#java -Xms2000m -Dthread_count=10 -Dtimeout=60000 -cp log4j2-performance.jar javaopt.logging.benchmark.TestLog4j2 Log4j2RandomAccessFileAppenderAsyncLoggerThread
+#java -Xms2000m -Dthread_count=10 -Dtimeout=60000 -cp log4j2-performance.jar javaopt.logging.benchmark.TestLog4j2 Log4j2RollingRandomAccessFileAppenderAsyncLoggerThread
+
+java -Xms2000m -DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector -Dthread_count=10 -Dtimeout=60000 -cp log4j2-performance.jar javaopt.logging.benchmark.TestLog4j2 Log4j2FileAppenderThread
+java -Xms2000m -DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector -Dthread_count=10 -Dtimeout=60000 -cp log4j2-performance.jar javaopt.logging.benchmark.TestLog4j2 Log4j2RollingFileAppenderThread
+java -Xms2000m -DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector -Dthread_count=10 -Dtimeout=60000 -cp log4j2-performance.jar javaopt.logging.benchmark.TestLog4j2 Log4j2RandomAccessFileAppenderThread
+java -Xms2000m -DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector -Dthread_count=10 -Dtimeout=60000 -cp log4j2-performance.jar javaopt.logging.benchmark.TestLog4j2 Log4j2RollingRandomAccessFileAppenderThread

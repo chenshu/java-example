@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="MyApp" packages="">
+	<Appenders>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout>
+				<Pattern>%d{HH:mm:ss.SSS} [%t] %p %c{50} - %m%n</Pattern>
+			</PatternLayout>
+		</Console>
+		<File name="File" fileName="logs/file.log" bufferedIO="true"
+			bufferSize="8192" immediateFlush="false">
+			<PatternLayout>
+				<Pattern>%d{HH:mm:ss.SSS} [%t] %p %c{50} - %m%n</Pattern>
+			</PatternLayout>
+		</File>
+		<File name="AFile" fileName="logs/async-file.log" bufferedIO="true"
+			bufferSize="8192" immediateFlush="false">
+			<PatternLayout>
+				<Pattern>%d{HH:mm:ss.SSS} [%t] %p %c{50} - %m%n</Pattern>
+			</PatternLayout>
+		</File>
+		<RollingFile name="RollingFile" fileName="logs/rollingfile.log"
+			filePattern="logs/rollingfile-%d{yyyy-MM-dd}.log" bufferedIO="true"
+			bufferSize="8192" immediateFlush="false">
+			<PatternLayout>
+				<Pattern>%d{HH:mm:ss.SSS} [%t] %p %c{50} - %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
+		<RollingFile name="ARollingFile" fileName="logs/async-rollingfile.log"
+			filePattern="logs/rollingfile-%d{yyyy-MM-dd}.log" bufferedIO="true"
+			bufferSize="8192" immediateFlush="false">
+			<PatternLayout>
+				<Pattern>%d{HH:mm:ss.SSS} [%t] %p %c{50} - %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
+		<RandomAccessFile name="RandomAccessFile" fileName="logs/randomaccessfile.log"
+			bufferSize="8192" immediateFlush="false">
+			<PatternLayout>
+				<Pattern>%d{HH:mm:ss.SSS} [%t] %p %c{50} - %m%n</Pattern>
+			</PatternLayout>
+		</RandomAccessFile>
+		<RandomAccessFile name="ARandomAccessFile"
+			fileName="logs/async-randomaccessfile.log" bufferSize="8192"
+			immediateFlush="false">
+			<PatternLayout>
+				<Pattern>%d{HH:mm:ss.SSS} [%t] %p %c{50} - %m%n</Pattern>
+			</PatternLayout>
+		</RandomAccessFile>
+		<RollingRandomAccessFile name="RollingRandomAccessFile"
+			fileName="logs/rollingrandomaccessfile.log" filePattern="logs/rollingrandomaccessfile-%d{yyyy-MM-dd}.log"
+			bufferSize="8192" immediateFlush="false">
+			<PatternLayout>
+				<Pattern>%d{HH:mm:ss.SSS} [%t] %p %c{50} - %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingRandomAccessFile>
+		<RollingRandomAccessFile name="ARollingRandomAccessFile"
+			fileName="logs/async-rollingrandomaccessfile.log" filePattern="logs/async-rollingrandomaccessfile-%d{yyyy-MM-dd}.log"
+			bufferSize="8192" immediateFlush="false">
+			<PatternLayout>
+				<Pattern>%d{HH:mm:ss.SSS} [%t] %p %c{50} - %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingRandomAccessFile>
+		<Async name="AsyncFile">
+			<AppenderRef ref="AFile" />
+		</Async>
+		<Async name="AsyncRollingFile">
+			<AppenderRef ref="ARollingFile" />
+		</Async>
+		<Async name="AsyncRandomAccessFile">
+			<AppenderRef ref="ARandomAccessFile" />
+		</Async>
+		<Async name="AsyncRollingRandomAccessFile">
+			<AppenderRef ref="ARollingRandomAccessFile" />
+		</Async>
+	</Appenders>
+	<Loggers>
+		<Logger name="javaopt.logging.benchmark.Log4j2FileAppenderThread"
+			level="info" additivity="false" includeLocation="false">
+			<AppenderRef ref="File" />
+		</Logger>
+		<Logger name="javaopt.logging.benchmark.Log4j2RollingFileAppenderThread"
+			level="info" additivity="false" includeLocation="false">
+			<AppenderRef ref="RollingFile" />
+		</Logger>
+		<Logger
+			name="javaopt.logging.benchmark.Log4j2RandomAccessFileAppenderThread"
+			level="info" additivity="false" includeLocation="false">
+			<AppenderRef ref="RandomAccessFile" />
+		</Logger>
+		<Logger
+			name="javaopt.logging.benchmark.Log4j2RollingRandomAccessFileAppenderThread"
+			level="info" additivity="false" includeLocation="false">
+			<AppenderRef ref="RollingRandomAccessFile" />
+		</Logger>
+
+		<Logger name="javaopt.logging.benchmark.Log4j2AsyncFileAppenderThread"
+			level="info" additivity="false" includeLocation="false">
+			<AppenderRef ref="AsyncFile" />
+		</Logger>
+		<Logger
+			name="javaopt.logging.benchmark.Log4j2AsyncRollingFileAppenderThread"
+			level="info" additivity="false" includeLocation="false">
+			<AppenderRef ref="AsyncRollingFile" />
+		</Logger>
+		<Logger
+			name="javaopt.logging.benchmark.Log4j2AsyncRandomAccessFileAppenderThread"
+			level="info" additivity="false" includeLocation="false">
+			<AppenderRef ref="AsyncRandomAccessFile" />
+		</Logger>
+		<Logger
+			name="javaopt.logging.benchmark.Log4j2AsyncRollingRandomAccessFileAppenderThread"
+			level="info" additivity="false" includeLocation="false">
+			<AppenderRef ref="AsyncRollingRandomAccessFile" />
+		</Logger>
+
+		<AsyncLogger
+			name="javaopt.logging.benchmark.Log4j2FileAppenderAsyncLoggerThread"
+			level="info" additivity="false" includeLocation="false">
+			<AppenderRef ref="File" />
+		</AsyncLogger>
+		<AsyncLogger
+			name="javaopt.logging.benchmark.Log4j2RollingFileAppenderAsyncLoggerThread"
+			level="info" additivity="false" includeLocation="false">
+			<AppenderRef ref="RollingFile" />
+		</AsyncLogger>
+		<AsyncLogger
+			name="javaopt.logging.benchmark.Log4j2RandomAccessFileAppenderAsyncLoggerThread"
+			level="info" additivity="false" includeLocation="false">
+			<AppenderRef ref="RandomAccessFile" />
+		</AsyncLogger>
+		<AsyncLogger
+			name="javaopt.logging.benchmark.Log4j2RollingRandomAccessFileAppenderAsyncLoggerThread"
+			level="info" additivity="false" includeLocation="false">
+			<AppenderRef ref="RollingRandomAccessFile" />
+		</AsyncLogger>
+
+		<Root level="info" includeLocation="false">
+			<AppenderRef ref="STDOUT" />
+		</Root>
+	</Loggers>
+</Configuration>
