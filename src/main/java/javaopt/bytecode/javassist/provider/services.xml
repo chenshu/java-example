@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 业务相关 -->
+
+	<bean id="demoMessage" class="javaopt.bytecode.javassist.provider.DemoMessageImpl" />
+	<bean id="demoUser" class="javaopt.bytecode.javassist.provider.DemoUserImpl" />
+
+	<bean class="javaopt.bytecode.javassist.provider.Container"
+		init-method="init">
+		<property name="interfaces">
+			<list>
+				<bean class="javaopt.bytecode.javassist.provider.ServiceConfig">
+					<property name="name" value="osp.demo.message" />
+					<property name="interfaceName" value="javaopt.bytecode.javassist.provider.DemoMessage" />
+					<property name="instanceClass" ref="demoMessage" />
+				</bean>
+				<bean class="javaopt.bytecode.javassist.provider.ServiceConfig">
+					<property name="name" value="osp.demo.user" />
+					<property name="interfaceName" value="javaopt.bytecode.javassist.provider.DemoUser" />
+					<property name="instanceClass" ref="demoUser" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+</beans>
